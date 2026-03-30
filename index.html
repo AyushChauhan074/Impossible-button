@@ -1,96 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TypeTest — How Fast Are You?</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impossible Button</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue:400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-
-  <div class="page">
-    <header class="header">
-      <span class="logo">TYPE<em>TEST</em></span>
-      <span class="tagline">measure your speed &nbsp;·&nbsp; train your fingers</span>
-    </header>
-
-    <!-- Idle screen -->
-    <section class="screen show" id="screen-idle">
-      <div class="card">
-        <div class="idle-top">
-          <p class="instruction">press <kbd>space</kbd> or click start</p>
-        </div>
-        <div class="sentence-preview" id="preview-text"></div>
-        <button class="btn-start" id="btn-start">START TEST</button>
-        <p class="footer-note">paste disabled &nbsp;·&nbsp; vanilla js &nbsp;·&nbsp; no frameworks</p>
-      </div>
-    </section>
-
-    <!-- Typing screen -->
-    <section class="screen" id="screen-typing">
-      <div class="stats-bar">
-        <div class="stat">
-          <span class="stat-val" id="live-wpm">0</span>
-          <span class="stat-label">WPM</span>
-        </div>
-        <div class="stat">
-          <span class="stat-val" id="live-time">0s</span>
-          <span class="stat-label">TIME</span>
-        </div>
-        <div class="stat">
-          <span class="stat-val" id="live-acc">100%</span>
-          <span class="stat-label">ACCURACY</span>
-        </div>
-        <div class="stat">
-          <span class="stat-val" id="live-errors">0</span>
-          <span class="stat-label">ERRORS</span>
-        </div>
-      </div>
-      <div class="card typing-card" style="margin-top:16px">
-        <div class="sentence-display" id="sentence-display"></div>
-        <textarea
-          id="input-box"
-          class="input-box"
-          placeholder="start typing here..."
-          autocomplete="off"
-          autocorrect="off"
-          autocapitalize="off"
-          spellcheck="false"
-        ></textarea>
-        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
-      </div>
-    </section>
-
-    <!-- Result screen -->
-    <section class="screen" id="screen-result">
-      <div class="card result-card">
-        <p class="result-label">your result</p>
-        <div class="result-wpm" id="result-wpm">--</div>
-        <p class="result-wpm-unit">words per minute</p>
-        <div class="result-row">
-          <div class="result-stat">
-            <span class="rs-val" id="result-acc">--%</span>
-            <span class="rs-label">accuracy</span>
-          </div>
-          <div class="result-stat">
-            <span class="rs-val" id="result-time">--s</span>
-            <span class="rs-label">time taken</span>
-          </div>
-          <div class="result-stat">
-            <span class="rs-val" id="result-errors">--</span>
-            <span class="rs-label">errors</span>
-          </div>
-        </div>
-        <div class="result-badge" id="result-badge"></div>
-        <button class="btn-start" id="btn-retry">TRY AGAIN</button>
-      </div>
-    </section>
+  <div class="scanline-overlay"></div>
+  <div class="grid-bg"></div>
+  <div class="top-bar">
+    <span class="logo">IMPOSSIBLE BUTTON</span>
+    <div class="give-up-top"><button id="giveUpBtn" class="give-up-btn">I Give Up</button></div>
   </div>
-
-  <script src="sentences.js"></script>
-  <script src="script.js"></script>
+  <main>
+    <section id="mainScreen" class="screen show">
+      <h1>CLICK THE BUTTON</h1>
+      <p class="taunt" id="tauntText">Go on, try it...</p>
+      <button id="impossibleBtn">Button</button>
+      <!-- Give up panel removed, button is now in top bar -->
+    </section>
+    <section id="victoryScreen" class="screen">
+      <h1>VICTORY!</h1>
+      <p>You actually did it in <span id="victoryAttempts">0</span> attempts!</p>
+      <div id="confetti"></div>
+      <button id="victoryRestartBtn">Restart</button>
+    </section>
+    <section id="surrenderScreen" class="screen">
+      <h1>SURRENDERED</h1>
+      <p>Even the best have limits. Try again?</p>
+      <button id="retryBtn">Retry</button>
+    </section>
+  </main>
+  <script type="module" src="js/script.js"></script>
 </body>
 </html>
