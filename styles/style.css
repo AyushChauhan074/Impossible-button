@@ -1,1 +1,221 @@
+/* Impossible Button - Retro Terminal Brutalist Theme */
+:root {
+  --bg:      #0d0d0d;
+  --surface: #1a1a1a;
+  --border:  #2a2a2a;
+  --text:    #f5f5f5;
+  --muted:   #555555;
+  --accent:  #ff4444;
+  --btn-bg:  #ff4444;
+  --btn-text:#f5f5f5;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Space Mono', monospace;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow: hidden;
+}
+body {
+  position: relative;
+}
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  z-index: 2;
+}
+.screen.show {
+  display: flex;
+}
+h1 {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 0.5em;
+  text-shadow: 0 0 8px var(--accent), 0 2px 0 #222;
+}
+p, .taunt {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  color: var(--accent);
+  margin-bottom: 2em;
+  text-align: center;
+}
+button {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  background: var(--bg);
+  color: var(--btn-text);
+  border: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 0.7em 2.5em;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--accent), 0 2px 0 #222;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+  position: relative;
+  z-index: 3;
+}
+button:active {
+  background: var(--accent);
+  color: var(--bg);
+}
+#impossibleBtn.rage {
+  background: var(--accent);
+  color: var(--btn-text);
+  border-color: var(--accent);
+  animation: rage-shake 0.12s infinite linear;
+}
+@keyframes rage-shake {
+  0% { transform: translate(0, 0) rotate(-2deg); }
+  25% { transform: translate(2px, -2px) rotate(2deg); }
+  50% { transform: translate(-2px, 2px) rotate(-2deg); }
+  75% { transform: translate(2px, 2px) rotate(2deg); }
+  100% { transform: translate(0, 0) rotate(-2deg); }
+}
+.top-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  height: 48px;
+  background: rgba(10,10,10,0.98);
+  border-bottom: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  padding: 0 2em;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  min-width: 0;
+}
+.top-bar > * {
+  min-width: 0;
+  flex-shrink: 1;
+}
+.logo {
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent);
+  min-width: 0;
+  flex-shrink: 1;
+}
+.attempts {
+  color: var(--muted);
+  font-size: 1.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 18ch;
+  min-width: 0;
+  flex-shrink: 1;
+}
+@media (max-width: 600px) {
+  .top-bar {
+    font-size: 1.1rem;
+    padding: 0 0.7em;
+  }
+  .attempts {
+    font-size: 0.95rem;
+    max-width: 10ch;
+  }
+}
+# Add accessible hover/focus styles for buttons
+button:hover, button:focus {
+  background: var(--button-hover-bg, #e0e0e0);
+  color: var(--button-hover-fg, #222);
+  outline: 2px solid var(--accent, #222);
+  cursor: pointer;
+  filter: brightness(1.1);
+  transition: background 0.1s, color 0.1s, filter 0.1s;
+}
+# Top bar give up button
+.give-up-top {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.give-up-btn {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  background: var(--accent);
+  color: var(--btn-text);
+  border: 2.5px solid var(--accent);
+  border-radius: 7px;
+  padding: 0.4em 1.2em;
+  margin-left: 1.2em;
+  box-shadow: 0 0 8px var(--accent), 0 1px 0 #222;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.1s;
+  cursor: pointer;
+  z-index: 3;
+}
+.give-up-btn:hover, .give-up-btn:focus {
+  background: var(--button-hover-bg, #e0e0e0);
+  color: var(--button-hover-fg, #222);
+  outline: 2px solid var(--accent, #222);
+  filter: brightness(1.1);
+}
+#confetti {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 100;
+}
+/* Scanline overlay */
+.scanline-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.04) 0px,
+    rgba(255,255,255,0.04) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  mix-blend-mode: overlay;
+}
+/* Animated grid background */
+.grid-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background:
+    linear-gradient(90deg, var(--border) 1px, transparent 1px 80px, var(--border) 81px, transparent 81px 160px),
+    linear-gradient(180deg, var(--border) 1px, transparent 1px 80px, var(--border) 81px, transparent 81px 160px);
+  background-size: 160px 160px;
+  animation: grid-drift 12s linear infinite;
+}
+@keyframes grid-drift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 160px 80px, 80px 160px; }
+}
+/* Confetti particles */
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  opacity: 0.85;
+  z-index: 101;
+  will-change: transform;
+}
 
