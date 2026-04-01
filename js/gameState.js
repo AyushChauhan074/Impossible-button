@@ -1,0 +1,20 @@
+// Centralized game state for Impossible Button
+export const state = {
+  impossibleBtn: null,
+  mainScreen: null,
+  victoryScreen: null,
+  surrenderScreen: null,
+  giveUpBtn: null,
+  retryBtn: null,
+  victoryAttempts: null,
+  tauntText: null,
+  confetti: null,
+  attempts: 0,
+  rageMode: false,
+  easyMode: false,
+  panicRadius: 80,
+  escapeSpeed: 1.5,
+  btnPos: {x: window.innerWidth/2, y: window.innerHeight/2},
+  btnSize: 120,
+  btnEscaped: false,
+};
